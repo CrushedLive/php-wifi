@@ -3,6 +3,7 @@
 namespace Sanchescom\WiFi\System;
 
 use Illuminate\Support\Collection as BaseCollection;
+use Illuminate\Support\ItemNotFoundException;
 use Sanchescom\WiFi\Exceptions\NetworkNotFoundException;
 
 /**
@@ -51,12 +52,12 @@ class Collection extends BaseCollection
      * @throws \Sanchescom\WiFi\Exceptions\NetworkNotFoundException
      *
      */
-    public function firstOrFail()
+    public function firstOrFail($key = null, $operator = null, $value = null)
     {
-        if ($this->isEmpty()) {
+        try {
+            return $this->firstOrFail($key, $operator, $value);
+        } catch (ItemNotFoundException $e) {
             throw new NetworkNotFoundException();
         }
-
-        return $this->first();
     }
 }
