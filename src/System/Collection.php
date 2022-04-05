@@ -55,7 +55,7 @@ class Collection extends BaseCollection
     public function firstOrFail($key = null, $operator = null, $value = null)
     {
         try {
-            return parent::firstOrFail($key, $operator, $value);
+            return parent::firstOrFail(...func_get_args());
         } catch (ItemNotFoundException $e) {
             throw new NetworkNotFoundException();
         }
