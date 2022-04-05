@@ -2,8 +2,8 @@
 
 namespace Sanchescom\WiFi\System;
 
+use Illuminate\Support\Collection as BaseCollection;
 use Sanchescom\WiFi\Exceptions\NetworkNotFoundException;
-use Tightenco\Collect\Support\Collection as BaseCollection;
 
 /**
  * Class Collection.
@@ -47,9 +47,9 @@ class Collection extends BaseCollection
     }
 
     /**
+     * @return \Sanchescom\WiFi\System\AbstractNetwork
      * @throws \Sanchescom\WiFi\Exceptions\NetworkNotFoundException
      *
-     * @return \Sanchescom\WiFi\System\AbstractNetwork
      */
     public function firstOrFail()
     {
